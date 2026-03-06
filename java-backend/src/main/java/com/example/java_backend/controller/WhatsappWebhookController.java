@@ -23,12 +23,13 @@ public class WhatsappWebhookController {
         value = "/whatsapp",
         consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
     )
-    public ResponseEntity<String> handleWebhook(
+    public ResponseEntity<Void> handleWebhook(
             @RequestParam("From") String from,
             @RequestParam("Body") String body
     ) {
         Instant incomingTimeStamp=Instant.now();
         messageOrchestratorService.orchestrateMessage(from, body, incomingTimeStamp);
-        return ResponseEntity.ok("Webhook received");
+        return ResponseEntity.ok().build();
     }
 }
+
