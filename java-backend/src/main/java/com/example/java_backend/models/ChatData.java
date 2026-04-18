@@ -16,7 +16,9 @@ public class ChatData {
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private Long uid;
+    @Column(columnDefinition = "TEXT")
     private String incomingMessage;
+    @Column(columnDefinition = "TEXT")
     private String responseMessage;
     @Column(name = "sender")
     private String from;
@@ -24,5 +26,4 @@ public class ChatData {
     private String to;
     private Instant responseTimestamp;
     private Instant incomingTimestamp;
-
 }
